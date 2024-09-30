@@ -1,9 +1,8 @@
 let renderData = document.querySelector(".renderData");
 let renderCartData = document.querySelector(".renderCartData");
 
-// Function to render products
 function renderProducts(products) {
-    renderData.innerHTML = ""; // Clear previous products
+    renderData.innerHTML = "";
     products.forEach((ele) => {
         let productCard = document.createElement("div");
         productCard.setAttribute("class", "product-card");
@@ -16,7 +15,7 @@ function renderProducts(products) {
         createTitle.textContent = ele.title;
 
         let createPriceEle = document.createElement("p");
-        createPriceEle.textContent = `$${ele.price}`;
+        createPriceEle.textContent = $${ele.price};
 
         let btnEle = document.createElement("button");
         btnEle.textContent = "Add to cart";
@@ -28,12 +27,10 @@ function renderProducts(products) {
 
         renderData.appendChild(productCard);
 
-        // Add to cart functionality
         btnEle.addEventListener("click", () => addTocart(ele.image, ele.title, ele.price));
     });
 }
 
-// Function to add items to cart
 function addTocart(img, title, price) {
     let cartItem = document.createElement("div");
     cartItem.setAttribute("class", "cart-item");
@@ -46,9 +43,8 @@ function addTocart(img, title, price) {
     cartTitleEle.textContent = title;
 
     let cartPriceEle = document.createElement("p");
-    cartPriceEle.textContent = `$${price}`;
+    cartPriceEle.textContent = $${price};
 
-    // Create remove button
     let removeBtn = document.createElement("button");
     removeBtn.setAttribute("class", "remove-btn");
     removeBtn.textContent = "Remove";
@@ -64,12 +60,10 @@ function addTocart(img, title, price) {
     renderCartData.appendChild(cartItem);
 }
 
-// Scroll to cart section when the cart icon is clicked
 document.querySelector(".cart-icon").addEventListener("click", () => {
     document.getElementById("cartSection").scrollIntoView({ behavior: "smooth" });
 });
 
-// Fetch and display jewelry products
 function fetchJewelry() {
     fetch('https://fakestoreapi.com/products/category/jewelery')
         .then(res => res.json())
@@ -78,7 +72,10 @@ function fetchJewelry() {
         });
 }
 
-// Fetch and display clothes products (Women's clothing)
+document.getElementById("jewelryBtn").addEventListener("click", () => {
+    fetchJewelry();  // Fix for switching to jewelry
+});
+
 document.getElementById("clothesBtn").addEventListener("click", () => {
     fetch("https://fakestoreapi.com/products/category/women's%20clothing")
         .then(res => res.json())
@@ -87,7 +84,6 @@ document.getElementById("clothesBtn").addEventListener("click", () => {
         });
 });
 
-// Default to displaying jewelry products on initial load
 document.addEventListener("DOMContentLoaded", () => {
-    fetchJewelry();  // Fetch and display jewelry immediately on page load
+    fetchJewelry();
 });
