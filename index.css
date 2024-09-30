@@ -1,4 +1,4 @@
-/* Same as before, focusing on layout for dynamically generated elements */
+
 
 body {
     font-family: Arial, sans-serif;
@@ -49,7 +49,7 @@ body {
     cursor: pointer;
 }
 
-/* Category buttons */
+
 .category-buttons {
     margin: 20px;
     text-align: center;
